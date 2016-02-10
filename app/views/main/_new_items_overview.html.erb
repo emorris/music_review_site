@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-sm-12" id="new-items-row">
+  <div class="row">
+  <% 8.times  do |i| %>
+    <div class="col-md-4 col-sm-6">
+      
+      <a href="#" class="darken">
+        <div class="new-item-overview">
+          <div class="image-wrapper">
+           <img src="temp_images/<%= i %>.jpg" alt="...">
+          </div> 
+          <div class="link-info">
+            <p><%= Faker::Hipster.words(4).join(" ") %></p>
+            <!-- <p><%= Faker::Hipster.paragraph(1) %> </p> -->
+          </div>
+        </div>
+      </a>
+
+    </div><!--/.col-xs-6.col-lg-4-->
+  <% end %>
+  </div><!--/row-->
+</div><!--/.col-xs-12.col-sm-9-->

@@ -1,0 +1,175 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ $icon-font-path: "bootstrap-sass-official/assets/fonts/bootstrap/";
+ @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+  
+$color1: #05668d; //rgba(5, 102, 141, 100)
+$color2: #427aa1; //rgba(66, 122, 161, 100)
+$color3: #ebf2fa; //rgba(235, 242, 250, 100)
+$color4: #679436; //rgba(103, 148, 54, 100)
+$color5: #a5be00; //rgba(165, 190, 0, 100)
+
+
+$color1: #70003f; //rgba(112, 0, 63, 100)
+$color2: #210010; //rgba(33, 0, 16, 100)
+$color3: #007e89; //rgba(0, 126, 137, 100)
+$color4: #749199; //rgba(116, 145, 153, 100)
+$color5: #037724; //rgba(3, 119, 36, 100)
+
+
+$color1: #0c117a; //rgba(12, 17, 122, 100)
+$color2: #e81725; //rgba(232, 23, 37, 100)
+$color3: #70c0f9; //rgba(112, 192, 249, 100)
+$color4: #1260ba; //rgba(18, 96, 186, 100)
+$color5: #120428; //rgba(18, 4, 40, 100)
+
+
+
+$picture-slider-color:black;
+$navbar-color:$color2;
+$border-color-new-time:$color1;
+$navbar-font-color: white;
+$site-background-color: lighten($color3, 0%);
+$darken-color: black;
+
+@mixin opacity ($num){
+  opacity: $num/100;
+  filter: alpha(opacity=$num); /* For IE8 and earlier */
+}
+
+@mixin box-shadow(){
+  -moz-box-shadow: 3px 3px 10px #000;
+  -webkit-box-shadow: 3px 3px 10px #000;
+  box-shadow: 3px 3px 10px #000;
+}
+
+@mixin clip-triangle(){
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@mixin transition($time: 0.5s, $type: linear){
+  -webkit-transition: all $time $type;
+  -moz-transition: all $time $type;
+  -ms-transition: all $time $type;
+  -o-transition: all $time $type;
+  transition: all $time $type;
+}
+
+body{
+  background-color: $site-background-color;
+}
+
+//pictures carousel
+.navbar{
+  @include box-shadow();
+  background-color: $navbar-color;
+  border-color: black;
+  @include opacity(90);
+  a{
+    color: $navbar-font-color;
+    &:hover{
+
+    }
+  }
+}
+
+.top-offset{
+  margin-top: 4em;
+}
+
+.carousel-block{
+  margin: 0 auto;
+}
+
+.carousel{
+  @include box-shadow();
+  .item{
+    height: 300px;
+    img{
+      width:100%;
+    }
+    .active{
+      display: inline-block;
+    }
+  }
+  .carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: $picture-slider-color;
+    @include opacity(90);
+    color: #fff;
+    text-align: left;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+#new-items-row{
+  margin-top: 1em;
+}
+
+a.darken{
+  display: block;
+  background-color: $darken-color;
+  padding: 0;
+  @include transition(0.5s, linear);
+  &:hover img {
+    //@include opacity(20); 
+    transform: scale(1.5);          
+  }
+  &:hover{
+    background-color: $darken-color;
+  }
+  &:hover .link-info{
+    @include transition(0.5s, linear);
+    top: 0;
+  }
+  img {
+    display: block;
+    @include transition(0.5s, linear)
+  }
+
+}
+.new-item-overview{
+  @include box-shadow();
+  border: 1px solid $border-color-new-time;
+  position: relative;
+  margin: 1em 0;
+  padding: 0;
+  overflow: hidden;
+
+  .link-info{
+    position: absolute;
+    top: -50px;
+    padding: 0;
+    background-color:$picture-slider-color;
+    text-align: center;
+    width:100%;
+    @include transition(0.2s, linear);
+    @include opacity(90);
+    p {
+      padding: 0.5em;
+      color:white;
+      font-size: 1.25em;
+      margin:0;
+
+    }
+    
+  }
+  .image-wrapper{
+
+    height: 200px;
+    overflow: hidden;
+    img{
+      width:100%;
+      position: relative;
+    }
+  }
+}
