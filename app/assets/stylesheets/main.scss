@@ -24,14 +24,24 @@ $color3: #70c0f9; //rgba(112, 192, 249, 100)
 $color4: #1260ba; //rgba(18, 96, 186, 100)
 $color5: #120428; //rgba(18, 4, 40, 100)
 
+// $color1:#443322;
+// $color2:#dd3300;
+// $color3:#dd4411;
+// $color4:#ee9922;
+// $color5:#aabb99;
 
+$color-list: $color3 $color4 $color5;
 
 $picture-slider-color:black;
 $navbar-color:$color2;
 $border-color-new-time:$color1;
 $navbar-font-color: white;
-$site-background-color: lighten($color3, 0%);
+$site-background-color: lighten($color1, 40%);
 $darken-color: black;
+
+$font-main: "Lucida Sans Unicode", "Lucida Grande",sans-serif;
+$font-sub: "Times New Roman", Times, serif;
+$site-title-font: Arial, Helvetica, sans-serif;
 
 @mixin opacity ($num){
   opacity: $num/100;
@@ -57,26 +67,116 @@ $darken-color: black;
   transition: all $time $type;
 }
 
+@mixin border-radius(){
+  border-radius:1em;
+}
+
 body{
-  background-color: $site-background-color;
+  font-family: $font-main;
+  background-color: $site-background-color;  
+}
+
+.front-page-background{
+  background-color: $color4;
+  background-image: url('/vhs-tracking-4.gif');
+  //background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@function ThreeD-Text($list, $layers:3){
+  $x: 0;
+  $y: 0;
+  $value: "0 0 white";
+  @for $z from 1 through $layers{
+    @each $color in $list {
+      $x: $x - 2;
+      $y: $y + 1;
+      $value: '#{$value}, #{$x}px #{$y}px #{$color}';
+    }
+  }
+  @return unquote($value);
+}
+
+.sidebar{
+  background-color: white;
+  @include box-shadow();
+}
+
+.article-main {
+  margin:0 1em;
+  background-color: white;
+  @include box-shadow();
+  .header{
+    position:relative;
+  }
+  .article_header{
+    position:absolute;
+
+    width: 58%;
+    color: white;
+    @include box-shadow();
+    @include opacity(90);
+    background-color: black;
+    padding: 0 1em;
+    z-index: 3;
+  }
+  img{
+    // position:absolute;
+    top:0;
+    left: 0px;
+    width:100%;
+    z-index: 1;
+    min-height: 4em;
+  }
+  .title, .meta{
+    font-family: $font-sub;
+  }
+  .title{
+    text-align: left;
+    padding:0;
+    margin: 0;
+  }
+  .meta{
+    text-align: left;
+  }
 }
 
 //pictures carousel
 .navbar{
   @include box-shadow();
   background-color: $navbar-color;
-  border-color: black;
+  color: white;
+  margin-bottom:0;
+  border: 0;
   @include opacity(90);
-  a{
+  li > a, a{
+    @include transition(0.5s, linear);
     color: $navbar-font-color;
-    &:hover{
+    &:hover, &:focus{
+      font-size: 1.5em;
+      background-color: $color4;
+    }
+  }
 
+  .navbar-brand { 
+    font-size: 2.5em;
+    font-family: $site-title-font;
+    color: white; 
+    text-shadow:  ThreeD-Text($color-list);
+    @include transition(0.5s, linear);
+    &:hover, &:focus  {
+      font-size: 3em;
+      position: relative; 
+      background-color:transparent;
+      text-shadow: ThreeD-Text($color-list,1)
     }
   }
 }
 
 .top-offset{
-  margin-top: 4em;
+  padding-top: 4em;
 }
 
 .carousel-block{
@@ -137,14 +237,15 @@ a.darken{
   }
 
 }
+
 .new-item-overview{
   @include box-shadow();
-  border: 1px solid $border-color-new-time;
+  //border: 1px solid $border-color-new-time;
   position: relative;
   margin: 1em 0;
   padding: 0;
   overflow: hidden;
-
+  @include border-radius();
   .link-info{
     position: absolute;
     top: -50px;
@@ -157,14 +258,11 @@ a.darken{
     p {
       padding: 0.5em;
       color:white;
-      font-size: 1.25em;
       margin:0;
-
     }
-    
   }
-  .image-wrapper{
 
+  .image-wrapper{
     height: 200px;
     overflow: hidden;
     img{
