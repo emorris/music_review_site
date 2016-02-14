@@ -1,0 +1,82 @@
+ @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+$color1: #247ba0; //rgba(36, 123, 160, 100)
+$color2: #70c1b3; //rgba(112, 193, 179, 100)
+$color3: #b2dbbf; //rgba(178, 219, 191, 100)
+$color4: #f3ffbd; //rgba(243, 255, 189, 100)
+$color5: #ff1654; //rgba(255, 22, 84, 100)
+
+$grey: #EEEEEE;
+body{
+  background-color: lighten($color1, 10%);
+}
+.main{
+  background-color:white;
+}
+
+button, 
+html input[type="button"], 
+input[type="reset"], 
+input[type="submit"], 
+.create_btn{
+  @extend .btn;
+}
+
+table {
+ @extend .table;
+ @extend .table-striped;
+}
+
+
+.alert-notice {
+   @extend .alert-success;
+}
+.alert-alert {
+  @extend .alert-danger;
+}
+.error{
+  @extend .alert-danger;
+}
+a.new, a.edit, a.destroy,
+a.add, a.default{
+  @extend .btn;
+}
+
+a.new,
+a.add {
+  @extend .btn-success;
+}
+
+a.default{
+  @extend .btn-primary
+}
+
+a.edit{
+  @extend .btn-warning;
+}
+
+a.destroy{
+  @extend .btn-danger;
+}
+
+
+
+.sidebar{
+  background-color:white;
+  border-right: 1px solid $grey;
+  padding:0;
+  .nav-sidebar{
+    li:first-child{
+      font-weight: bold;
+    }
+    li:not(:first-child) a{
+      padding-left: 1.5em;
+    }
+    a{
+      &:hover{
+        background-color: lighten($color2, 0%);
+      }
+    }
+    margin-bottom: 0.5em;
+  }
+
+}

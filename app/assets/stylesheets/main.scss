@@ -67,10 +67,6 @@ $site-title-font: Arial, Helvetica, sans-serif;
   transition: all $time $type;
 }
 
-@mixin border-radius(){
-  border-radius:1em;
-}
-
 body{
   font-family: $font-main;
   background-color: $site-background-color;  
@@ -78,8 +74,8 @@ body{
 
 .front-page-background{
   background-color: $color4;
-  background-image: url('/vhs-tracking-4.gif');
-  //background-blend-mode: multiply;
+  //background-image: url('/vhs-tracking-4.gif');
+  background-blend-mode: multiply;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -113,7 +109,8 @@ body{
   }
   .article_header{
     position:absolute;
-
+    top: 25%;
+    left: 25%;
     width: 58%;
     color: white;
     @include box-shadow();
@@ -240,12 +237,12 @@ a.darken{
 
 .new-item-overview{
   @include box-shadow();
-  //border: 1px solid $border-color-new-time;
+  border: 1px solid $border-color-new-time;
   position: relative;
   margin: 1em 0;
   padding: 0;
   overflow: hidden;
-  @include border-radius();
+
   .link-info{
     position: absolute;
     top: -50px;
