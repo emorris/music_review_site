@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require summernote
-//= require turbolinks
 
 $(document).ready(function(){
    $('.summer-note').summernote({
