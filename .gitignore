@@ -17,3 +17,7 @@
 /tmp
 
 bower_components/*
+
+.byebug_history
+
+public/uploads/*

@@ -29,7 +29,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
 gem 'bower'
-gem 'rails_12factor'
+gem 'bootsy'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -13,4 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require summernote
 //= require turbolinks
+
+$(document).ready(function(){
+   $('.summer-note').summernote({
+    lang: 'en-EN',
+    height: 500,
+    callbacks:{
+      onImageUpload: function(files) {
+        sendFile(files[0],$(this));
+      }
+    }
+  });
+})
+
+function sendFile(file, editor) {
+  data = new FormData(file);
+  data.append("file", file);
+  console.log(editor)
+  $.ajax({
+    data: data,
+    type: "POST",
+    url: "/admin/pictures.json",
+    dataType: "JSON",
+    processData: false,
+    contentType: false,
+    success: function(data) {
+      console.log(data)
+      editor.summernote("insertImage",data['file']['url'], data['id'] );
+    }
+  });
+}

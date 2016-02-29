@@ -41,6 +41,10 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootsy (2.2.1)
+      carrierwave (~> 0.10)
+      mini_magick (~> 4.3)
+      remotipart (~> 1.2)
     bower (0.0.5)
       multi_json
     builder (3.2.2)
@@ -136,11 +140,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.4)
     railties (4.2.5)
       actionpack (= 4.2.5)
       activesupport (= 4.2.5)
@@ -149,6 +148,7 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     rspec-core (3.2.3)
@@ -217,6 +217,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsy
   bower
   byebug
   capybara (~> 2.4)
@@ -232,7 +233,6 @@ DEPENDENCIES
   pg
   puma
   rails (= 4.2.5)
-  rails_12factor
   rspec-rails (~> 3.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
