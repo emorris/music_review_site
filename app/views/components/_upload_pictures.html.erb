@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Upload file</h2>
+  <% model_name = objects.last.class.to_s.underscore %>
+  <%= form_for [:admin] + objects, url: { action: :upload_picture}, method: :patch, html: { multipart: true, id: "image-upload"  }  do |f| %>
+    <div class="row fileupload-buttonbar">
+        <div class="col-md-12">
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Add files...</span>
+                 <%= file_field_tag 'image_file', name:"#{model_name}[pictures_attributes][0][image_file]", multiple: true %>
+            </span>
+        </div>
+  <% end %>
+    <div id="files" class="files"></div>
+</div>
+
+<script id="loading-file-button" type="text/x-handlebars-template">
+  <button id="{{id}}" class="btn btn-lg btn-warning">
+      <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading... {{file_name}}
+  </button>
+</script>

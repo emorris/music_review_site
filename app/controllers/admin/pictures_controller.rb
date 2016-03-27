@@ -12,7 +12,13 @@ class Admin::PicturesController < Admin::ApplicationController
     end 
   end
 
-  def destory
+  def destroy
+    picture = Picture.find( params['id'])
+    picture.destroy
+    respond_to do |format|
+      format.html { redirect_to '/admin', notice: 'Picture was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

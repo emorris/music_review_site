@@ -22,10 +22,29 @@ $(document).ready(function(){
     callbacks:{
       onImageUpload: function(files) {
         sendFile(files[0],$(this));
+      },
+      onMediaDelete : function($target, editor, $editable) {
+        console.log(); // img 
+        var split = $target.attr('src').split( '/' )
+        var id = split[split.length - 2]
+        deletePicture(id)
+        // remove element in editor 
+        $target.remove();
       }
     }
   });
 })
+
+function deletePicture(id){
+  console.log("/admin/pictures/"+id)
+  $.ajax({
+    type: "DELETE",
+    url: "/admin/pictures/"+id+".json",
+    success: function(data) {
+      editor.summernote("insertImage",data['file']['url'], data['id'] );
+    }
+  });
+}
 
 function sendFile(file, editor) {
   data = new FormData(file);
@@ -39,7 +58,6 @@ function sendFile(file, editor) {
     processData: false,
     contentType: false,
     success: function(data) {
-      console.log(data)
       editor.summernote("insertImage",data['file']['url'], data['id'] );
     }
   });
