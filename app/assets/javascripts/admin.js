@@ -15,11 +15,23 @@
 //= require bootstrap
 //= require summernote
 
+
 $(document).ready(function(){
+  var summernote_changed = false;
+
+  $(window).bind('beforeunload', function(){
+    if(summernote_changed){
+      return 'Are you sure you want to leave you have made chages to the text?';
+    }
+  });
+
    $('.summer-note').summernote({
     lang: 'en-EN',
     height: 500,
     callbacks:{
+      onChange: function(contents, $editable) {
+        summernote_changed = true;
+      },
       onImageUpload: function(files) {
         sendFile(files[0],$(this));
       },

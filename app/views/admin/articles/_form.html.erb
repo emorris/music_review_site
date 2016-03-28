@@ -17,6 +17,12 @@
     <label>Title</label>
     <%= f.text_field :title, class: form_class %>
   </div>
+  <div class="form-group">
+    <label>Main Picture</label>
+   
+    <%= f.file_field :main_picture %>
+    <%= image_tag @article.main_picture, size: "200x200" %>
+  </div>
    <div class="form-group">
     <label>Visible</label>
     <%= f.check_box :visible,  class: form_class %>
