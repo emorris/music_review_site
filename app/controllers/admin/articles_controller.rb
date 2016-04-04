@@ -1,10 +1,10 @@
 class Admin::ArticlesController < Admin::ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :add_picture]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.recent.limit(10)
   end
 
   # GET /articles/1
@@ -59,6 +59,13 @@ class Admin::ArticlesController < Admin::ApplicationController
       format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_picture
+    @article.pictures << Picture.new({file: params['file']})
+    render json: @article.pictures.last, status: :ok, location: @article.pictures.last.file.url
+    rescue
+      render json: @article.pictures.errors, status: :unprocessable_entity 
   end
 
   private

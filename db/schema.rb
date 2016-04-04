@@ -34,20 +34,6 @@ ActiveRecord::Schema.define(version: 20160327231535) do
   add_index "articles_categories", ["article_id"], name: "index_articles_categories_on_article_id", using: :btree
   add_index "articles_categories", ["category_id"], name: "index_articles_categories_on_category_id", using: :btree
 
-  create_table "bootsy_image_galleries", force: :cascade do |t|
-    t.integer  "bootsy_resource_id"
-    t.string   "bootsy_resource_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bootsy_images", force: :cascade do |t|
-    t.string   "image_file"
-    t.integer  "image_gallery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"

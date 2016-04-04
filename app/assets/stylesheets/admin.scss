@@ -77,15 +77,18 @@ a.destroy{
   @extend .btn-danger;
 }
 
-.actions{
-  position: fixed;
-  right: 20px;
-  bottom: 10px;
-  input[type="submit"]{
-    font-size: 24px
-  }
+input[type='submit']{
+  @extend .btn-success;
 }
 
+.actions{
+  position: fixed;
+  right: 2%;
+  top: 2%;
+  input[type="submit"]{
+    font-size: 1.6em;
+  }
+}
 .sidebar{
   background-color:white;
   border-right: 1px solid $grey;
@@ -104,5 +107,14 @@ a.destroy{
     }
     margin-bottom: 0.5em;
   }
+}
 
+.image-clip{
+  img{
+    position:relative;
+    width: 400px
+  }
+  width:200px;
+  height:200px;
+  overflow: hidden;
 }

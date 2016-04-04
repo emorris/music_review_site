@@ -25,6 +25,10 @@ $(document).ready(function(){
     }
   });
 
+  $("form").submit(function(){
+    $(window).unbind("beforeunload");
+  });
+
    $('.summer-note').summernote({
     lang: 'en-EN',
     height: 500,
@@ -48,10 +52,9 @@ $(document).ready(function(){
 })
 
 function deletePicture(id){
-  console.log("/admin/pictures/"+id)
   $.ajax({
     type: "DELETE",
-    url: "/admin/pictures/"+id+".json",
+    url: $('form').attr('action') + id + "/delete_picture",
     success: function(data) {
       editor.summernote("insertImage",data['file']['url'], data['id'] );
     }
@@ -61,15 +64,15 @@ function deletePicture(id){
 function sendFile(file, editor) {
   data = new FormData(file);
   data.append("file", file);
-  console.log(editor)
   $.ajax({
     data: data,
-    type: "POST",
-    url: "/admin/pictures.json",
+    type: "PATCH",
+    url: $('form').attr('action') + "/add_picture" ,
     dataType: "JSON",
     processData: false,
     contentType: false,
     success: function(data) {
+      console.log(data)
       editor.summernote("insertImage",data['file']['url'], data['id'] );
     }
   });
